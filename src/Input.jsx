@@ -7,10 +7,7 @@ const Input = () => {
 let arr = ['same']
 
 
-//compare each input letter to the array letter
-// seperate each item in the string 
-// then compare each of the items to the letter 
-// return true or false 
+ 
 console.log('string',arr.toString().includes(letter))
 
 

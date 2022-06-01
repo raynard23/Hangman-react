@@ -1,17 +1,22 @@
-// import logo from './logo.svg';
+
 import './App.css';
 import React from 'react';
-import Input from './Input';
+import Search from './Search'
+ import { useEffect, useState } from 'react';
+
+
 function App() {
+ 
+const RandomWord = ['purple', 'red', 'green', 'seven']
+
 
   return (
   <div>
   <h1> Hang Person</h1>
-   <Input> </Input>
+  <Search/>
   </div>
 
-  //lives 
-  //win/loss
+
 
   )
 }
