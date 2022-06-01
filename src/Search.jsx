@@ -1,29 +1,38 @@
 
 import React from "react";
 import { useState } from "react";
-const Search = () => {
+const Search = ({randomString}) => {
     const [letterGuess, setLetterGuess] = useState('')
 
-    console.log('here',letterGuess)
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-        alert('here')
-        letterGuess('')
+    let testArray = ['lazy', 'chaney', 'chase']
+  console.log(randomString)
+    const onSubmit = (e,{randomString}) => {
+         e.preventDefault()
+         
+         if (randomString.includes(letterGuess)){
+             console.log(randomString)
+         }else{
+             alert('tryAgain')
+         }
+       
+        
+        setLetterGuess('')
     }
   
 return (
 
     <div>
         
-        <input onSubmit={onSubmit}
+        <input 
             type='search'
             className="search-bar "
             onChange={(e) => setLetterGuess(e.target.value)}
             placeholder="press a letter test your skil"
 
         />
-     
+     <button 
+     onClick={onSubmit}
+     > Click </button>
 </div> 
 )
 }
