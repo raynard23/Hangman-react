@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-// actually do i even need a input, could i just have an alphabet?
+
 
 const Input = () => {
     const [letter , setLetter] = useState('')
