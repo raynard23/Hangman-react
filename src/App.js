@@ -10,7 +10,7 @@ import ShowGuess from './ShowGuess'
 
 function App() {
   // could i set the category as state so when someone clicks the page the data changes in an array?
-  let testArray = [ 'chanaaa']
+  let testArray = [ 'broncos', 'chiefs' , 'raiders', 'chargers']
  
   const [randomString , setRandomstring ] = useState(testArray[Math.floor(Math.random()*testArray.length)])
   const [letterGuess, setLetterGuess] = useState('')
@@ -24,7 +24,7 @@ function App() {
   return (
   <div>
   <h1> Hang Person</h1>
-  
+  <h4>Category: NFL TEAMS </h4>
  
     <Search randomString={randomString} setLetterGuess={setLetterGuess} letterGuess ={letterGuess}/>
      {<ShowGuess randomString={randomString} letterGuess = {letterGuess} />}

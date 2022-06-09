@@ -8,13 +8,14 @@ const GuessChecker = ({randomString, letterGuess}) => {
    const [count,setCount] = useState(3)
   
     const guessCheck = (e) => {
+        // if(letterGuess)
         e.preventDefault()
     if(randomString.includes(letterGuess)){
        
        
      }else {
-      setCount(count - 1)
-        alert(`guess again you have ${count} tries`)
+      setCount( count - 1)
+        alert(`guess again you have ${count } tries`)
        
         // console.log('letter',count)
         // console.log(randomString)

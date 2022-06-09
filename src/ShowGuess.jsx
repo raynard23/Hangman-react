@@ -1,26 +1,33 @@
 
+import { compareDocumentPosition } from "domutils";
 import React from "react";
 import { useState } from "react";
 
 
-const ShowGuess = ({letterGuess,randomString}) => {
-const[hiddenRandomString,setHiddenRandomString] = useState([randomString.replace(/[a-z]/g, ' -')])
+const ShowGuess = ({ letterGuess, randomString }) => {
+    const [hiddenRandomString, setHiddenRandomString] = useState([])
+    const maskedWord = randomString.split('').map(letter =>
+        hiddenRandomString.includes(letter) ? letter : "_").join(" ");
 
-let indexOfRandom = randomString.split('').map((el,index) =>{
-        if(el === letterGuess ){
-        console.log(hiddenRandomString[index]=el)
+    randomString.split('').forEach((el, index) => {
+        if (el === letterGuess) {
+             console.log(hiddenRandomString[index] = el, index)
         }
-    } ) 
-    
-
-let regex = new RegExp(`${letterGuess}`)
+    })
 
 
 
- 
- return(
-     <span >{hiddenRandomString}</span>
- )
+
+
+
+    let regex = new RegExp(`${letterGuess}`)
+
+
+
+
+    return (
+        <span >{maskedWord}</span>
+    )
 }
 
 export default ShowGuess
