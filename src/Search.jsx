@@ -2,21 +2,23 @@ import React from "react";
 import { useState } from "react";
 import GuessChecker from "./GuessChecker";
 const Search = ({
-  randomString,
   setLetterGuess,
   letterGuess,
   showMaskedWord,
   count,
-  hiddenRandomString,
   setCount,
+  setResult,
+  randomString,
+  maskedWord,
 }) => {
   const guessCheck = (e) => {
     e.preventDefault();
     showMaskedWord();
-    console.log(count);
     setCount(count - 1);
-  };
 
+    setLetterGuess(" ");
+  };
+  // console.log(maskedWord.join("") === randomString.guess);
   return (
     <div>
       <input
