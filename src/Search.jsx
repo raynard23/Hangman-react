@@ -11,23 +11,23 @@ const Search = ({
   randomString,
   maskedWord,
 }) => {
+  // const [letter, setLetter] = useState("");
   const guessCheck = (e) => {
     e.preventDefault();
+    //  setLetterGuess(letter);
     showMaskedWord();
     setCount(count - 1);
-
-    setLetterGuess(" ");
   };
-  // console.log(maskedWord.join("") === randomString.guess);
+  // setLetterGuess("r");s
   return (
     <div>
       <input
         type="search"
         className="search-bar "
-        onChange={(e) => setLetterGuess(e.target.value)}
+        onChange={(e) => setLetterGuess(e.target.value.toLowerCase())}
         placeholder="press a letter test your skil"
       />
-      <button onClick={guessCheck}>Click here </button>
+      <button onClick={guessCheck}>Guess </button>
     </div>
   );
 };

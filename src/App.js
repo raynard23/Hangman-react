@@ -9,6 +9,7 @@ import "bulma/css/bulma.min.css";
 import { index } from "cheerio/lib/api/traversing";
 import Results from "./Results";
 import LocalStorage from "./LocalStorage";
+import PickedLetters from "./PickedLetters";
 
 function App() {
   // could i set the category as state so when someone clicks the page the data changes in an array?
@@ -18,6 +19,10 @@ function App() {
       guess: "raiders",
     },
   ];
+  const [isPlaying, setIsPlaying] = useState(false);
+  // const startGame = () => {
+  //   setPlay(true);
+  // };
   const [result, setResult] = useState();
   const [count, setCount] = useState(8);
 
@@ -42,31 +47,40 @@ function App() {
       console.log(letterGuess);
     });
     setMaskedWord(newWord);
+    setLetterGuess("");
   };
-  console.log(letterGuess);
+
   return (
     <div className="container ">
       <div className="is-primary">
         <h1> Hang Person</h1>
-        <h4>Category:{randomString.category} </h4>
+        {(!isPlaying || isWinner || isLoser) && (
+          <button onClick={() => setIsPlaying(true)}> Click to play </button>
+        )}
+        {isPlaying && (
+          <div>
+            <h4>Category:{randomString.category} </h4>
 
-        <Search
-          randomString={randomString}
-          setLetterGuess={setLetterGuess}
-          letterGuess={letterGuess}
-          showMaskedWord={showMaskedWord}
-          setCount={setCount}
-          count={count}
-          localStore={localStore}
-          setResult={setResult}
-          maskedWord={maskedWord}
-        />
-        <div className="masked">{maskedWord}</div>
-        {/* {<ShowGuess randomString={randomString} letterGuess = {letterGuess} />} */}
-        {/* {randomString && <GuessLines randomString = {randomString}/>} */}
-        <GuessChecker count={count} />
-        <LocalStorage letterGuess={letterGuess} localStore={localStore} />
-        {(isWinner || isLoser) && <Results isWinner={isWinner} />}
+            <Search
+              randomString={randomString}
+              setLetterGuess={setLetterGuess}
+              letterGuess={letterGuess}
+              showMaskedWord={showMaskedWord}
+              setCount={setCount}
+              count={count}
+              localStore={localStore}
+              setResult={setResult}
+              maskedWord={maskedWord}
+            />
+            <div className="masked">{maskedWord}</div>
+            {/* {<ShowGuess randomString={randomString} letterGuess = {letterGuess} />} */}
+            {/* {randomString && <GuessLines randomString = {randomString}/>} */}
+            <GuessChecker count={count} />
+            {/* <LocalStorage letterGuess={letterGuess} localStore={localStore} /> */}
+            {<PickedLetters letterGuess={letterGuess} />}
+            {(isWinner || isLoser) && <Results isWinner={isWinner} />}
+          </div>
+        )}
       </div>
     </div>
   );
